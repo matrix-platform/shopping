@@ -1,0 +1,12 @@
+{
+    "name": "matrix-platform/shopping",
+    "authors": [
+        {
+            "name": "jrealm",
+            "email": "jrealm@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+    }
+}
