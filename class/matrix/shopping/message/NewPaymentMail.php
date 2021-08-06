@@ -7,7 +7,9 @@ use matrix\utility\Fn;
 trait NewPaymentMail {
 
     protected function postprocess($form, $result) {
-        $this->mail($result['order']);
+        if (key_exists('order', $result)) {
+            $this->mail($result['order']);
+        }
 
         return $result;
     }

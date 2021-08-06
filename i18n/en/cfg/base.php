@@ -10,4 +10,12 @@ return [
     'ecpay.ItemName' => 'Item Name',
     'ecpay.EncryptType' => 'Encrypt Type',
 
+    'sunpay' => 'SunPay',
+    'sunpay.url' => 'API URL',
+    'sunpay.password' => 'Transaction Password',
+    'sunpay.atm' => 'Merchant ID: ATM',
+    'sunpay.credit-card' => 'Merchant ID: Credit Card',
+    'sunpay.payment-days' => 'Payment Days',
+    'sunpay.ProductName1' => 'Product Name',
+
 ];
