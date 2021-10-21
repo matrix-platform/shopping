@@ -24,7 +24,7 @@ class EcpayNotify extends Controller {
             $order = $model->find(['order_no' => $info[0], 'status' => 1]);
 
             if ($order && $order['amount'] + $order['shipping'] == $data['TradeAmt']) {
-                $order['payment_notice'] = json_encode($form);
+                $order['payment_notice'] = json_encode($form, JSON_UNESCAPED_UNICODE);
                 $order['pay_time'] = date(cfg('system.timestamp'));
                 $order['status'] = 2;
 
@@ -44,7 +44,7 @@ class EcpayNotify extends Controller {
     }
 
     private function checksum($form) {
-        logger($this->name())->info(json_encode($form));
+        logger($this->name())->info(json_encode($form, JSON_UNESCAPED_UNICODE));
 
         $ecpay = load_cfg('ecpay');
 

@@ -4,7 +4,7 @@ namespace matrix\shopping\payment;
 
 use matrix\web\Controller;
 
-class EcpaySuccess extends Controller {
+class EcpayReturn extends Controller {
 
     public function __construct($paymentMethod) {
         $this->values = ['paymentMethod' => $paymentMethod];
@@ -50,7 +50,7 @@ class EcpaySuccess extends Controller {
     }
 
     private function checksum($form) {
-        logger($this->name())->info(json_encode($form));
+        logger($this->name())->info(json_encode($form, JSON_UNESCAPED_UNICODE));
 
         $ecpay = load_cfg('ecpay');
 

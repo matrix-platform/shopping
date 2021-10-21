@@ -15,7 +15,7 @@ trait NewPaymentMail {
     }
 
     protected function mail($order) {
-        $content = load_i18n('template/new-payment', $order['language']);
+        $content = load_i18n('template/new-payment', @$order['language'] ?: LANGUAGE);
 
         if (@$content['to']) {
             $content['order'] = $order;
