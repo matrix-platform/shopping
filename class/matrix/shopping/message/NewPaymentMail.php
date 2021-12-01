@@ -2,7 +2,7 @@
 
 namespace matrix\shopping\message;
 
-use matrix\utility\Fn;
+use matrix\utility\Func;
 
 trait NewPaymentMail {
 
@@ -20,7 +20,7 @@ trait NewPaymentMail {
         if (@$content['to']) {
             $content['order'] = $order;
 
-            Fn::send_mail(array_merge(load_cfg($content['mailer']), $content));
+            Func::send_mail(array_merge(load_cfg($content['mailer']), $content));
         }
     }
 
