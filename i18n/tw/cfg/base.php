@@ -10,6 +10,14 @@ return [
     'ecpay.ItemName' => '商品名稱',
     'ecpay.EncryptType' => '加密類型',
 
+    'newebpay' => '藍新金流',
+    'newebpay.MerchantID' => '商店代號',
+    'newebpay.RespondType' => '回傳格式',
+    'newebpay.Version' => '串接程式版本',
+    'newebpay.ItemDesc' => '商品資訊',
+    'newebpay.TradeLimit' => '交易限制秒數',
+    'newebpay.url' => 'API 網址',
+
     'sunpay' => '紅陽支付',
     'sunpay.url' => 'API 網址',
     'sunpay.password' => '交易密碼',

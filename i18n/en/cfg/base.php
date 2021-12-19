@@ -10,6 +10,14 @@ return [
     'ecpay.ItemName' => 'Item Name',
     'ecpay.EncryptType' => 'Encrypt Type',
 
+    'newebpay' => 'Newebpay',
+    'newebpay.MerchantID' => 'Merchant ID',
+    'newebpay.RespondType' => 'Respond Type',
+    'newebpay.Version' => 'Version',
+    'newebpay.ItemDesc' => 'Item Description',
+    'newebpay.TradeLimit' => 'Trade Limit',
+    'newebpay.url' => 'API URL',
+
     'sunpay' => 'SunPay',
     'sunpay.url' => 'API URL',
     'sunpay.password' => 'Transaction Password',
