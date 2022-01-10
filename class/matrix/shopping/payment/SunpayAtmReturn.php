@@ -32,7 +32,7 @@ class SunpayAtmReturn extends Controller {
 
             if ($order) {
                 if (@$form['SendType'] === '2') {
-                    return ['success' => true, 'view' => '302.php', 'path' => url(APP_ROOT . 'order/' . $order['id'])];
+                    return ['success' => true, 'view' => '302.php', 'path' => get_url(APP_ROOT . 'order/' . $order['id'])];
                 } else {
                     return ['success' => true, 'view' => 'payment/sunpay-ok.php'];
                 }
@@ -41,7 +41,7 @@ class SunpayAtmReturn extends Controller {
     }
 
     private function checksum($form) {
-        logger($this->name())->info('CHECKSUM', $form);
+        logging($this->name())->info('CHECKSUM', $form);
 
         $sunpay = load_cfg('sunpay');
 
@@ -54,12 +54,12 @@ class SunpayAtmReturn extends Controller {
         ];
 
         if ($form['ChkValue'] === strtoupper(sha1(implode('', $tokens)))) {
-            logger($this->name())->info('OK');
+            logging($this->name())->info('OK');
 
             return $form;
         }
 
-        logger($this->name())->info('ERROR');
+        logging($this->name())->info('ERROR');
 
         return false;
     }

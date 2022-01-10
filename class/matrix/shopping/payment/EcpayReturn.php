@@ -43,14 +43,14 @@ class EcpayReturn extends Controller {
                 return [
                     'success' => true,
                     'view' => '302.php',
-                    'path' => url(APP_ROOT . 'order/' . $order['id']),
+                    'path' => get_url(APP_ROOT . 'order/' . $order['id']),
                 ];
             }
         }
     }
 
     private function checksum($form) {
-        logger($this->name())->info(json_encode($form, JSON_UNESCAPED_UNICODE));
+        logging($this->name())->info(json_encode($form, JSON_UNESCAPED_UNICODE));
 
         $ecpay = load_cfg('ecpay');
 
@@ -70,12 +70,12 @@ class EcpayReturn extends Controller {
             }
 
             if ($code && $code === $form['RtnCode']) {
-                logger($this->name())->info('OK');
+                logging($this->name())->info('OK');
                 return $form;
             }
         }
 
-        logger($this->name())->info('ERROR');
+        logging($this->name())->info('ERROR');
 
         return false;
     }

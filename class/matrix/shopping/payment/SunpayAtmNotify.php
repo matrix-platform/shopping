@@ -40,7 +40,7 @@ class SunpayAtmNotify extends Controller {
     }
 
     private function checksum($form) {
-        logger($this->name())->info('CHECKSUM', $form);
+        logging($this->name())->info('CHECKSUM', $form);
 
         $sunpay = load_cfg('sunpay');
 
@@ -54,12 +54,12 @@ class SunpayAtmNotify extends Controller {
         ];
 
         if ($form['ChkValue'] === strtoupper(sha1(implode('', $tokens)))) {
-            logger($this->name())->info('OK');
+            logging($this->name())->info('OK');
 
             return $form;
         }
 
-        logger($this->name())->info('ERROR');
+        logging($this->name())->info('ERROR');
 
         return false;
     }

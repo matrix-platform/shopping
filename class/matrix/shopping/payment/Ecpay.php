@@ -9,9 +9,9 @@ class Ecpay {
         $args['MerchantTradeNo'] = "{$order['order_no']}v{$order['payment_ver']}";
         $args['MerchantTradeDate'] = date('Y/m/d H:i:s');
         $args['TotalAmount'] = $order['amount'] + $order['shipping'];
-        $args['ReturnURL'] = url(APP_ROOT . 'payment/ecpay-atm-notify');
+        $args['ReturnURL'] = get_url(APP_ROOT . 'payment/ecpay-atm-notify');
         $args['ChoosePayment'] = 'ATM';
-        $args['ClientRedirectURL'] = url(APP_ROOT . 'payment/ecpay-atm-return');
+        $args['ClientRedirectURL'] = get_url(APP_ROOT . 'payment/ecpay-atm-return');
 
         $response = self::apply($args);
 
@@ -31,9 +31,9 @@ class Ecpay {
         $args['MerchantTradeNo'] = "{$order['order_no']}v{$order['payment_ver']}";
         $args['MerchantTradeDate'] = date('Y/m/d H:i:s');
         $args['TotalAmount'] = $order['amount'] + $order['shipping'];
-        $args['ReturnURL'] = url(APP_ROOT . 'payment/ecpay-credit-card-notify');
+        $args['ReturnURL'] = get_url(APP_ROOT . 'payment/ecpay-credit-card-notify');
         $args['ChoosePayment'] = 'Credit';
-        $args['OrderResultURL'] = url(APP_ROOT . 'payment/ecpay-credit-card-return');
+        $args['OrderResultURL'] = get_url(APP_ROOT . 'payment/ecpay-credit-card-return');
 
         $response = self::apply($args);
 
@@ -53,9 +53,9 @@ class Ecpay {
         $args['MerchantTradeNo'] = "{$order['order_no']}v{$order['payment_ver']}";
         $args['MerchantTradeDate'] = date('Y/m/d H:i:s');
         $args['TotalAmount'] = $order['amount'] + $order['shipping'];
-        $args['ReturnURL'] = url(APP_ROOT . 'payment/ecpay-cvs-notify');
+        $args['ReturnURL'] = get_url(APP_ROOT . 'payment/ecpay-cvs-notify');
         $args['ChoosePayment'] = 'CVS';
-        $args['ClientRedirectURL'] = url(APP_ROOT . 'payment/ecpay-cvs-return');
+        $args['ClientRedirectURL'] = get_url(APP_ROOT . 'payment/ecpay-cvs-return');
 
         $response = self::apply($args);
 

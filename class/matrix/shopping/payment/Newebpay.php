@@ -9,8 +9,8 @@ class Newebpay {
         $args['TimeStamp'] = time();
         $args['MerchantOrderNo'] = "{$order['order_no']}v{$order['payment_ver']}";
         $args['Amt'] = $order['amount'] + $order['shipping'];
-        $args['CustomerURL'] = url(APP_ROOT . 'payment/newebpay-atm-return');
-        $args['NotifyURL'] = url(APP_ROOT . 'payment/newebpay-atm-notify');
+        $args['CustomerURL'] = get_url(APP_ROOT . 'payment/newebpay-atm-return');
+        $args['NotifyURL'] = get_url(APP_ROOT . 'payment/newebpay-atm-notify');
         $args['LangType'] = (LANGUAGE === 'tw') ? 'zh-tw' : 'en';
         $args['Email'] = $member['mail'];
         $args['VACC'] = 1;
@@ -33,8 +33,8 @@ class Newebpay {
         $args['TimeStamp'] = time();
         $args['MerchantOrderNo'] = "{$order['order_no']}v{$order['payment_ver']}";
         $args['Amt'] = $order['amount'] + $order['shipping'];
-        $args['ReturnURL'] = url(APP_ROOT . 'payment/newebpay-credit-card-return');
-        $args['NotifyURL'] = url(APP_ROOT . 'payment/newebpay-credit-card-notify');
+        $args['ReturnURL'] = get_url(APP_ROOT . 'payment/newebpay-credit-card-return');
+        $args['NotifyURL'] = get_url(APP_ROOT . 'payment/newebpay-credit-card-notify');
         $args['LangType'] = (LANGUAGE === 'tw') ? 'zh-tw' : 'en';
         $args['Email'] = $member['mail'];
         $args['CREDIT'] = 1;
@@ -57,8 +57,8 @@ class Newebpay {
         $args['TimeStamp'] = time();
         $args['MerchantOrderNo'] = "{$order['order_no']}v{$order['payment_ver']}";
         $args['Amt'] = $order['amount'] + $order['shipping'];
-        $args['CustomerURL'] = url(APP_ROOT . 'payment/newebpay-cvs-return');
-        $args['NotifyURL'] = url(APP_ROOT . 'payment/newebpay-cvs-notify');
+        $args['CustomerURL'] = get_url(APP_ROOT . 'payment/newebpay-cvs-return');
+        $args['NotifyURL'] = get_url(APP_ROOT . 'payment/newebpay-cvs-notify');
         $args['LangType'] = (LANGUAGE === 'tw') ? 'zh-tw' : 'en';
         $args['Email'] = $member['mail'];
         $args['CVS'] = 1;

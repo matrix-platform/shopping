@@ -36,7 +36,7 @@ class SunpayCreditCardNotify extends Controller {
 
             if ($order) {
                 if (@$form['SendType'] === '2') {
-                    $result = ['success' => true, 'view' => '302.php', 'path' => url(APP_ROOT . 'order/' . $order['id'])];
+                    $result = ['success' => true, 'view' => '302.php', 'path' => get_url(APP_ROOT . 'order/' . $order['id'])];
                 } else {
                     $result = ['success' => true, 'view' => 'payment/sunpay-ok.php'];
                 }
@@ -51,7 +51,7 @@ class SunpayCreditCardNotify extends Controller {
     }
 
     private function checksum($form) {
-        logger($this->name())->info('CHECKSUM', $form);
+        logging($this->name())->info('CHECKSUM', $form);
 
         $sunpay = load_cfg('sunpay');
 
@@ -65,12 +65,12 @@ class SunpayCreditCardNotify extends Controller {
         ];
 
         if ($form['ChkValue'] === strtoupper(sha1(implode('', $tokens)))) {
-            logger($this->name())->info('OK');
+            logging($this->name())->info('OK');
 
             return $form;
         }
 
-        logger($this->name())->info('ERROR');
+        logging($this->name())->info('ERROR');
 
         return false;
     }

@@ -50,20 +50,20 @@ class NewebpayNotify extends Controller {
     }
 
     private function checksum($form) {
-        logger($this->name())->info(json_encode($form, JSON_UNESCAPED_UNICODE));
+        logging($this->name())->info(json_encode($form, JSON_UNESCAPED_UNICODE));
 
         $args = load_cfg('newebpay');
         $data = json_decode(Newebpay::decrypt($form['TradeInfo'], $args['HashKey'], $args['HashIV']), true);
 
-        logger($this->name())->info(json_encode($data, JSON_UNESCAPED_UNICODE));
+        logging($this->name())->info(json_encode($data, JSON_UNESCAPED_UNICODE));
 
         if (@$data['Status'] === 'SUCCESS') {
-            logger($this->name())->info('OK');
+            logging($this->name())->info('OK');
 
             return $data;
         }
 
-        logger($this->name())->info('ERROR');
+        logging($this->name())->info('ERROR');
 
         return false;
     }

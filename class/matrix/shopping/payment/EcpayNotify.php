@@ -44,18 +44,18 @@ class EcpayNotify extends Controller {
     }
 
     private function checksum($form) {
-        logger($this->name())->info(json_encode($form, JSON_UNESCAPED_UNICODE));
+        logging($this->name())->info(json_encode($form, JSON_UNESCAPED_UNICODE));
 
         $ecpay = load_cfg('ecpay');
 
         if ($form['CheckMacValue'] === Ecpay::checksum($form, @$ecpay['HashKey'], @$ecpay['HashIV'])) {
             if ($form['RtnCode'] === '1') {
-                logger($this->name())->info('OK');
+                logging($this->name())->info('OK');
                 return $form;
             }
         }
 
-        logger($this->name())->info('ERROR');
+        logging($this->name())->info('ERROR');
 
         return false;
     }
