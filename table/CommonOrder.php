@@ -88,5 +88,6 @@ $tbl->add('status', Integer::class)
     ->required(true);
 
 $tbl->ranking('-id');
+$tbl->title('order_no');
 
 return $tbl;
