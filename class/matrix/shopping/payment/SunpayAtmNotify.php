@@ -21,17 +21,21 @@ class SunpayAtmNotify extends Controller {
             $model = model('Order');
 
             $info = explode('v', $data['Td']);
-            $order = $model->find(['order_no' => $info[0], 'status' => 1]);
+            $order = $model->find(['order_no' => $info[0]]);
 
             if ($order && $order['amount'] + $order['shipping'] == $data['MN']) {
-                $order['payment_notice'] = json_encode($form, JSON_UNESCAPED_UNICODE);
-                $order['pay_time'] = date(cfg('system.timestamp'));
-                $order['status'] = 2;
-
-                $order = $model->update($order);
-
-                if ($order) {
-                    return $this->subprocess($form, ['success' => true, 'view' => 'payment/sunpay-ok.php', 'order' => $order]);
+                switch ($order['status']) {
+                case 1:
+                    $order['payment_notice'] = json_encode($form, JSON_UNESCAPED_UNICODE);
+                    $order['pay_time'] = date(cfg('system.timestamp'));
+                    $order['status'] = 2;
+                    $order = $model->update($order);
+                    if ($order) {
+                        return $this->subprocess($form, ['success' => true, 'view' => 'payment/sunpay-ok.php', 'order' => $order]);
+                    }
+                    break;
+                case 2:
+                    return ['success' => true, 'view' => 'payment/sunpay-ok.php'];
                 }
             }
         }
