@@ -30,6 +30,10 @@ class SunpayCreditCardNotify extends Controller {
                 $order['pay_time'] = date(cfg('system.timestamp'));
                 $order['status'] = 2;
 
+                if (!$order['invoice_num']) {
+                    $order['invoice_num'] = @$data['InvoiceNo'];
+                }
+
                 $order = $model->update($order);
                 $update = true;
             }

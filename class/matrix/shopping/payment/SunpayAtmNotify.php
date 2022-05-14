@@ -29,6 +29,9 @@ class SunpayAtmNotify extends Controller {
                     $order['payment_notice'] = json_encode($form, JSON_UNESCAPED_UNICODE);
                     $order['pay_time'] = date(cfg('system.timestamp'));
                     $order['status'] = 2;
+                    if (!$order['invoice_num']) {
+                        $order['invoice_num'] = @$data['InvoiceNo'];
+                    }
                     $order = $model->update($order);
                     if ($order) {
                         return $this->subprocess($form, ['success' => true, 'view' => 'payment/sunpay-ok.php', 'order' => $order]);
