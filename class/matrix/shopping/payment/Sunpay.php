@@ -9,8 +9,8 @@ class Sunpay {
         $args['web'] = $args['atm'];
         $args['MN'] = $order['amount'] + $order['shipping'];
         $args['Td'] = "{$order['order_no']}v{$order['payment_ver']}";
-        $args['sna'] = $order['name'];
-        $args['sdt'] = $order['phone'];
+        $args['sna'] = $member['name'] ?: $order['name'];
+        $args['sdt'] = $member['mobile'] ?: $order['phone'];
         $args['email'] = $member['mail'] ?: '';
         $args['DueDate'] = date('Ymd', time() + 86400 * $args['payment-days']);
         $args['UserNo'] = $member['id'];
@@ -37,8 +37,8 @@ class Sunpay {
         $args['web'] = $args['credit-card'];
         $args['MN'] = $order['amount'] + $order['shipping'];
         $args['Td'] = "{$order['order_no']}v{$order['payment_ver']}";
-        $args['sna'] = $order['name'];
-        $args['sdt'] = $order['phone'];
+        $args['sna'] = $member['name'] ?: $order['name'];
+        $args['sdt'] = $member['mobile'] ?: $order['phone'];
         $args['email'] = $member['mail'] ?: '';
         $args['Card_Type'] = '0';
         $args['UserNo'] = $member['id'];
@@ -64,8 +64,8 @@ class Sunpay {
         $args['web'] = $args['pay-code'];
         $args['MN'] = $order['amount'] + $order['shipping'];
         $args['Td'] = "{$order['order_no']}v{$order['payment_ver']}";
-        $args['sna'] = $order['name'];
-        $args['sdt'] = $order['phone'];
+        $args['sna'] = $member['name'] ?: $order['name'];
+        $args['sdt'] = $member['mobile'] ?: $order['phone'];
         $args['email'] = $member['mail'] ?: '';
         $args['DueDate'] = date('Ymd', time() + 86400 * $args['payment-days']);
         $args['UserNo'] = $member['id'];
