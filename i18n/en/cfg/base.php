@@ -23,6 +23,7 @@ return [
     'sunpay.password' => 'Transaction Password',
     'sunpay.atm' => 'Merchant ID: ATM',
     'sunpay.credit-card' => 'Merchant ID: Credit Card',
+    'sunpay.pay-code' => 'Merchant ID: Pay Code',
     'sunpay.payment-days' => 'Payment Days',
     'sunpay.ProductName1' => 'Product Name',
 

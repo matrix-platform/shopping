@@ -10,6 +10,8 @@ return [
 
     'credit-card' => null,
 
+    'pay-code' => null,
+
     'payment-days' => 3,
 
     'ProductName1' => null,

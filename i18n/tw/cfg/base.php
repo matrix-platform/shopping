@@ -23,6 +23,7 @@ return [
     'sunpay.password' => '交易密碼',
     'sunpay.atm' => '商店代號:虛擬帳號',
     'sunpay.credit-card' => '商店代號:信用卡',
+    'sunpay.pay-code' => '商店代號:超商代碼',
     'sunpay.payment-days' => '繳款天數',
     'sunpay.ProductName1' => '商品名稱',
 
