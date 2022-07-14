@@ -18,6 +18,7 @@ trait NewPaymentMail {
         $content = load_i18n('template/new-payment', @$order['language'] ?: LANGUAGE);
 
         if (@$content['to']) {
+            $content['async'] = true;
             $content['order'] = $order;
 
             Func::send_mail(array_merge(load_cfg($content['mailer']), $content));
