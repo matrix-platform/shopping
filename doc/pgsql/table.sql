@@ -30,6 +30,7 @@ CREATE TABLE common_order (
     invoice_request   TEXT                 NULL,
     invoice_response  TEXT                 NULL,
     invoice_time      TIMESTAMP            NULL,
+    invoice_ver       INTEGER              NULL,
     --
     snapshot          TEXT                 NULL,
     remark            TEXT                 NULL,

@@ -72,6 +72,9 @@ $tbl->add('invoice_response', Text::class)
 
 $tbl->add('invoice_time', Timestamp::class);
 
+$tbl->add('invoice_ver', Integer::class)
+    ->invisible(true);
+
 $tbl->add('snapshot', Text::class)
     ->invisible(true)
     ->readonly(true);
