@@ -10,9 +10,15 @@ class Ecpay {
         $data['MerchantID'] = $cfg['MerchantID'];
         $data['Print'] = '0';
         $data['Donation'] = '0';
-        $data['CarrierType'] = '1';
-        $data['CarrierNum'] = '';
         $data['InvType'] = '07';
+
+        if (key_exists('CustomerIdentifier', $data)) {
+            $data['CarrierType'] = '';
+            $data['CarrierNum'] = '';
+        } else if (!key_exists('CarrierType', $data)) {
+            $data['CarrierType'] = '1';
+            $data['CarrierNum'] = '';
+        }
 
         $param = [
             'MerchantID' => $cfg['MerchantID'],
@@ -45,6 +51,45 @@ class Ecpay {
         $result['response'] = $response;
 
         return $result;
+    }
+
+    public static function verifyCarrierNum($carrier) {
+        $cfg = load_cfg('ecpay-invoice');
+
+        $data = [
+            'MerchantID' => $cfg['MerchantID'],
+            'BarCode' => $carrier,
+        ];
+
+        $param = [
+            'MerchantID' => $cfg['MerchantID'],
+            'RqHeader' => ['Timestamp' => time()],
+            'Data' => self::encrypt($data, $cfg['HashKey'], $cfg['HashIV']),
+        ];
+
+        $request = [
+            'http' => [
+                'header' => "Content-Type: application/json\r\n",
+                'method' => 'POST',
+                'content' => json_encode($param),
+            ],
+        ];
+
+        $response = @file_get_contents("{$cfg['url']}CheckBarcode", false, stream_context_create($request));
+
+        if ($response) {
+            $response = json_decode($response, true);
+
+            if ($response) {
+                $result = self::decrypt($response['Data'], $cfg['HashKey'], $cfg['HashIV']);
+
+                if ($result['RtnCode'] === 1 && $result['IsExist'] === 'Y') {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     private static function decrypt($text, $key, $iv) {
