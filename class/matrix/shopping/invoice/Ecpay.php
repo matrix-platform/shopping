@@ -12,10 +12,7 @@ class Ecpay {
         $data['Donation'] = '0';
         $data['InvType'] = '07';
 
-        if (key_exists('CustomerIdentifier', $data)) {
-            $data['CarrierType'] = '';
-            $data['CarrierNum'] = '';
-        } else if (!key_exists('CarrierType', $data)) {
+        if (!key_exists('CarrierType', $data)) {
             $data['CarrierType'] = '1';
             $data['CarrierNum'] = '';
         }
