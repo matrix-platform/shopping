@@ -40,6 +40,8 @@ class EcpayReturn extends Controller {
             $order = $model->update($order);
 
             if ($order) {
+                $this->data($order);
+
                 return [
                     'success' => true,
                     'view' => '302.php',
