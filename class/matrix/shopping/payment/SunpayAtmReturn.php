@@ -32,12 +32,16 @@ class SunpayAtmReturn extends Controller {
 
             if ($order) {
                 if (@$form['SendType'] === '2') {
-                    return ['success' => true, 'view' => '302.php', 'path' => get_url(APP_ROOT . 'order/' . $order['id'])];
+                    return ['success' => true, 'view' => '302.php', 'path' => $this->getOrderPath($order)];
                 } else {
                     return ['success' => true, 'view' => 'payment/sunpay-ok.php'];
                 }
             }
         }
+    }
+
+    protected function getOrderPath($order) {
+        return get_url(APP_ROOT . 'order/' . $order['id']);
     }
 
     private function checksum($form) {

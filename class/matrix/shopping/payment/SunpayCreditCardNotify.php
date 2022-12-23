@@ -40,7 +40,7 @@ class SunpayCreditCardNotify extends Controller {
 
             if ($order) {
                 if (@$form['SendType'] === '2') {
-                    $result = ['success' => true, 'view' => '302.php', 'path' => get_url(APP_ROOT . 'order/' . $order['id'])];
+                    $result = ['success' => true, 'view' => '302.php', 'path' => $this->getOrderPath($order)];
                 } else {
                     $result = ['success' => true, 'view' => 'payment/sunpay-ok.php'];
                 }
@@ -52,6 +52,10 @@ class SunpayCreditCardNotify extends Controller {
                 return $this->subprocess($form, $result);
             }
         }
+    }
+
+    protected function getOrderPath($order) {
+        return get_url(APP_ROOT . 'order/' . $order['id']);
     }
 
     private function checksum($form) {

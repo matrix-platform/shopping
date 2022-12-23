@@ -41,10 +41,14 @@ class NewebpayReturn extends Controller {
                 return [
                     'success' => true,
                     'view' => '302.php',
-                    'path' => get_url(APP_ROOT . 'order/' . $order['id']),
+                    'path' => $this->getOrderPath($order),
                 ];
             }
         }
+    }
+
+    protected function getOrderPath($order) {
+        return get_url(APP_ROOT . 'order/' . $order['id']);
     }
 
     private function checksum($form) {
