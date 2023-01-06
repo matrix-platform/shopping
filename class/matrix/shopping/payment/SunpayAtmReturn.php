@@ -32,6 +32,8 @@ class SunpayAtmReturn extends Controller {
 
             if ($order) {
                 if (@$form['SendType'] === '2') {
+                    $this->data($order);
+
                     return ['success' => true, 'view' => '302.php', 'path' => $this->getOrderPath($order)];
                 } else {
                     return ['success' => true, 'view' => 'payment/sunpay-ok.php'];

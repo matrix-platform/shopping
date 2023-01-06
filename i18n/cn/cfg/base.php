@@ -10,6 +10,10 @@ return [
     'ecpay.ItemName' => '商品名称',
     'ecpay.EncryptType' => '加密类型',
 
+    'ecpay-invoice' => '绿界发票',
+    'ecpay-invoice.url' => 'API 网址',
+    'ecpay-invoice.MerchantID' => '特店编号',
+
     'newebpay' => '蓝新金流',
     'newebpay.MerchantID' => '商店代号',
     'newebpay.RespondType' => '回传格式',

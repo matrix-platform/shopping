@@ -59,7 +59,7 @@ class Sunpay {
         return $response;
     }
 
-    public static function applyPayCode($order, $member) {
+    public static function applyCvs($order, $member) {
         $args = load_cfg('sunpay');
         $args['web'] = $args['pay-code'];
         $args['MN'] = $order['amount'] + $order['shipping'];

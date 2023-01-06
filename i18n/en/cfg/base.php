@@ -10,6 +10,10 @@ return [
     'ecpay.ItemName' => 'Item Name',
     'ecpay.EncryptType' => 'Encrypt Type',
 
+    'ecpay-invoice' => 'ECPay Invoice',
+    'ecpay-invoice.url' => 'API URL',
+    'ecpay-invoice.MerchantID' => 'Merchant ID',
+
     'newebpay' => 'Newebpay',
     'newebpay.MerchantID' => 'Merchant ID',
     'newebpay.RespondType' => 'Respond Type',

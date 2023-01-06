@@ -40,6 +40,8 @@ class SunpayCreditCardNotify extends Controller {
 
             if ($order) {
                 if (@$form['SendType'] === '2') {
+                    $this->data($order);
+
                     $result = ['success' => true, 'view' => '302.php', 'path' => $this->getOrderPath($order)];
                 } else {
                     $result = ['success' => true, 'view' => 'payment/sunpay-ok.php'];
