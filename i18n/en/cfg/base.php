@@ -2,6 +2,16 @@
 
 return [
 
+    'digiflow' => 'DigiFlow',
+    'digiflow.version' => 'Version',
+    'digiflow.merchant_id' => 'Merchant ID',
+    'digiflow.terminal_id' => 'Terminal ID',
+    'digiflow.currency' => 'Currency',
+    'digiflow.order_desc' => 'Order Desc',
+    'digiflow.key' => 'Key',
+    'digiflow.apply_url' => 'Register API URL',
+    'digiflow.query_url' => 'Query API URL',
+
     'ecpay' => 'ECPay',
     'ecpay.url' => 'API URL',
     'ecpay.MerchantID' => 'Merchant ID',

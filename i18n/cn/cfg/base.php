@@ -2,6 +2,16 @@
 
 return [
 
+    'digiflow' => '数位鎏',
+    'digiflow.version' => '版本',
+    'digiflow.merchant_id' => '商店编号',
+    'digiflow.terminal_id' => '终端编号',
+    'digiflow.currency' => '交易币别',
+    'digiflow.order_desc' => '商品名称',
+    'digiflow.key' => '交易密钥',
+    'digiflow.apply_url' => '登记 API 网址',
+    'digiflow.query_url' => '查询 API 网址',
+
     'ecpay' => '绿界金流',
     'ecpay.url' => 'API 网址',
     'ecpay.MerchantID' => '特店编号',

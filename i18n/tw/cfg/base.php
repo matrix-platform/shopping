@@ -2,6 +2,16 @@
 
 return [
 
+    'digiflow' => '數位鎏',
+    'digiflow.version' => '版本',
+    'digiflow.merchant_id' => '商店編號',
+    'digiflow.terminal_id' => '終端編號',
+    'digiflow.currency' => '交易幣別',
+    'digiflow.order_desc' => '商品名稱',
+    'digiflow.key' => '交易密鑰',
+    'digiflow.apply_url' => '登記 API 網址',
+    'digiflow.query_url' => '查詢 API 網址',
+
     'ecpay' => '綠界金流',
     'ecpay.url' => 'API 網址',
     'ecpay.MerchantID' => '特店編號',
