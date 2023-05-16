@@ -18,29 +18,32 @@ class EcpayNotify extends Controller {
         $data = $this->checksum($form);
 
         if ($data) {
-            $model = model('Order');
+            $order = $this->getOrder(strstr($data['MerchantTradeNo'], 'v', true));
 
-            $info = explode('v', $data['MerchantTradeNo']);
-            $order = $model->find(['order_no' => $info[0], 'status' => 1]);
+            if ($order && $order['status'] === 1 && $order['amount'] + $order['shipping'] == $data['TradeAmt']) {
+                $order = $this->updateOrder($order['id'], [
+                    'pay_time' => now(),
+                    'payment_notice' => json_encode($form, JSON_UNESCAPED_UNICODE),
+                    'status' => 2,
+                ]);
 
-            if ($order && $order['amount'] + $order['shipping'] == $data['TradeAmt']) {
-                $order['payment_notice'] = json_encode($form, JSON_UNESCAPED_UNICODE);
-                $order['pay_time'] = date(cfg('system.timestamp'));
-                $order['status'] = 2;
-
-                $order = $model->update($order);
-
-                if ($order) {
-                    return $this->subprocess($form, [
-                        'success' => true,
-                        'view' => 'payment/ecpay-ok.php',
-                        'order' => $order,
-                    ]);
-                }
+                return $this->subprocess($form, [
+                    'success' => true,
+                    'view' => 'payment/ecpay-ok.php',
+                    'order' => $order,
+                ]);
             }
         }
 
         return ['view' => 'empty.php'];
+    }
+
+    protected function getOrder($order_no) {
+        return table('Order')->filter(['order_no' => $order_no])->get();
+    }
+
+    protected function updateOrder($id, $data) {
+        return table('Order')->filter($id)->updateOne($data);
     }
 
     private function checksum($form) {

@@ -18,24 +18,25 @@ class NewebpayReturn extends Controller {
         $data = $this->checksum($form);
 
         if ($data) {
-            $model = model('Order');
-
-            $info = explode('v', $data['Result']['MerchantOrderNo']);
-            $order = $model->find(['order_no' => $info[0]]);
-            $order['payment_response'] = json_encode($data, JSON_UNESCAPED_UNICODE);
-
-            switch ($data['Result']['PaymentType']) {
-            case 'VACC':
-                $order['payment'] = "{$data['Result']['BankCode']}-{$data['Result']['CodeNo']}";
-                break;
-            case 'CVS':
-                $order['payment'] = "{$data['Result']['CodeNo']}";
-                break;
-            }
-
-            $order = $model->update($order);
+            $order = $this->getOrder(strstr($data['MerchantTradeNo'], 'v', true));
 
             if ($order) {
+                switch ($data['Result']['PaymentType']) {
+                case 'VACC':
+                    $order['payment'] = "{$data['Result']['BankCode']}-{$data['Result']['CodeNo']}";
+                    break;
+                case 'CVS':
+                    $order['payment'] = "{$data['Result']['CodeNo']}";
+                    break;
+                default:
+                    $payment = $order['payment'];
+                }
+
+                $order = $this->updateOrder($order['id'], [
+                    'payment' => $payment,
+                    'payment_response' => json_encode($data, JSON_UNESCAPED_UNICODE),
+                ]);
+
                 $this->data($order);
 
                 return [
@@ -47,8 +48,16 @@ class NewebpayReturn extends Controller {
         }
     }
 
+    protected function getOrder($order_no) {
+        return table('Order')->filter(['order_no' => $order_no])->get();
+    }
+
     protected function getOrderPath($order) {
         return get_url(APP_ROOT . 'order/' . $order['id']);
+    }
+
+    protected function updateOrder($id, $data) {
+        return table('Order')->filter($id)->updateOne($data);
     }
 
     private function checksum($form) {
