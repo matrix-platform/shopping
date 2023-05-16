@@ -24,7 +24,8 @@ CREATE TABLE common_order (
     drawback_time     TIMESTAMP            NULL,
     --
     invoice_num       TEXT                 NULL,
-    invoice_type      INTEGER              NULL,
+    invoice_type      INTEGER              NULL, -- options: invoice-type
+    invoice_category  INTEGER              NULL, -- options: invoice-category
     tax_id            TEXT                 NULL,
     invoice_title     TEXT                 NULL,
     invoice_request   TEXT                 NULL,
@@ -36,7 +37,7 @@ CREATE TABLE common_order (
     remark            TEXT                 NULL,
     create_time       TIMESTAMP        NOT NULL,
     cancel_time       TIMESTAMP            NULL,
-    status            INTEGER          NOT NULL
+    status            INTEGER          NOT NULL  -- options: order-status
 );
 
 CREATE TABLE base_order () INHERITS (common_order);
