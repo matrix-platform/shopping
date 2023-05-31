@@ -18,7 +18,7 @@ class NewebpayReturn extends Controller {
         $data = $this->checksum($form);
 
         if ($data) {
-            $order = $this->getOrder(strstr($data['MerchantTradeNo'], 'v', true));
+            $order = $this->getOrder(strstr($data['Result']['MerchantOrderNo'], 'v', true));
 
             if ($order) {
                 switch ($data['Result']['PaymentType']) {

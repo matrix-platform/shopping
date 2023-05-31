@@ -18,7 +18,7 @@ class NewebpayNotify extends Controller {
         $data = $this->checksum($form);
 
         if ($data) {
-            $order = $this->getOrder(strstr($data['MerchantTradeNo'], 'v', true));
+            $order = $this->getOrder(strstr($data['Result']['MerchantOrderNo'], 'v', true));
 
             if ($order && $order['status'] === 1 && $order['amount'] + $order['shipping'] == $data['Result']['Amt']) {
                 switch ($data['Result']['PaymentType']) {
