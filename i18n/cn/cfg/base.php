@@ -24,6 +24,13 @@ return [
     'ecpay-invoice.url' => 'API 网址',
     'ecpay-invoice.MerchantID' => '特店编号',
 
+    'linepay' => 'LINE Pay',
+    'linepay.url' => 'API 网址',
+    'linepay.currency' => '币别',
+    'linepay.channel-id' => 'Channel ID',
+    'linepay.channel-secret' => 'Channel Secret',
+    'linepay.product-name' => '商品名称',
+
     'newebpay' => '蓝新金流',
     'newebpay.MerchantID' => '商店代号',
     'newebpay.RespondType' => '回传格式',

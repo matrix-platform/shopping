@@ -29,13 +29,12 @@ class LinepayReturn extends Controller {
                     'status' => 2,
                 ]);
 
-                $this->data($order);
-
-                return [
+                return $this->subprocess($form, [
                     'success' => true,
                     'view' => '302.php',
                     'path' => $this->getOrderPath($order),
-                ];
+                    'order' => $order,
+                ]);
             }
         }
 

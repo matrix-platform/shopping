@@ -24,6 +24,13 @@ return [
     'ecpay-invoice.url' => 'API URL',
     'ecpay-invoice.MerchantID' => 'Merchant ID',
 
+    'linepay' => 'LINE Pay',
+    'linepay.url' => 'API URL',
+    'linepay.currency' => 'Currency',
+    'linepay.channel-id' => 'Channel ID',
+    'linepay.channel-secret' => 'Channel Secret',
+    'linepay.product-name' => 'Product Name',
+
     'newebpay' => 'Newebpay',
     'newebpay.MerchantID' => 'Merchant ID',
     'newebpay.RespondType' => 'Respond Type',
