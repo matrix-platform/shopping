@@ -1,0 +1,9 @@
+<!DOCTYPE HTML>
+<html>
+    <body>
+        <script>
+            window.opener.ecpayShippingCvsMapReturn({{ form|json_encode|raw }});
+            window.close();
+        </script>
+    </body>
+</html>

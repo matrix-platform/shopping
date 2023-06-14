@@ -24,6 +24,12 @@ return [
     'ecpay-invoice.url' => 'API 网址',
     'ecpay-invoice.MerchantID' => '特店编号',
 
+    'ecpay-shipping' => '绿界物流',
+    'ecpay-shipping.url' => 'API 网址',
+    'ecpay-shipping.MerchantID' => '特店编号',
+    'ecpay-shipping.SenderName' => '寄件人',
+    'ecpay-shipping.SenderPhone' => '寄件人电话',
+
     'linepay' => 'LINE Pay',
     'linepay.url' => 'API 网址',
     'linepay.currency' => '币别',

@@ -24,6 +24,12 @@ return [
     'ecpay-invoice.url' => 'API URL',
     'ecpay-invoice.MerchantID' => 'Merchant ID',
 
+    'ecpay-shipping' => 'ECPay Logistics',
+    'ecpay-shipping.url' => 'API URL',
+    'ecpay-shipping.MerchantID' => 'Merchant ID',
+    'ecpay-shipping.SenderName' => 'Sender',
+    'ecpay-shipping.SenderPhone' => 'Sender Phone',
+
     'linepay' => 'LINE Pay',
     'linepay.url' => 'API URL',
     'linepay.currency' => 'Currency',

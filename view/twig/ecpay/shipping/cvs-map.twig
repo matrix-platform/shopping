@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+    <body>
+        <form action="{{ cfg('ecpay-shipping.url') }}map" id="form" method="POST">
+            <input name="MerchantID" type="hidden" value="{{ cfg('ecpay-shipping.MerchantID') }}" />
+            <input name="LogisticsType" type="hidden" value="CVS" />
+            <input name="LogisticsSubType" type="hidden" value="{{ form.type }}" />
+            <input name="IsCollection" type="hidden" value="{{ form.collection }}" />
+            <input name="ServerReplyURL" type="hidden" value="{{ constant('APP_ROOT')|url }}ecpay/shipping/cvs-map-return" />
+        </form>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                document.getElementById("form").submit();
+            });
+        </script>
+    </body>
+</html>
