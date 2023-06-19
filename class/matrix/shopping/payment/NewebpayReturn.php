@@ -23,10 +23,10 @@ class NewebpayReturn extends Controller {
             if ($order) {
                 switch ($data['Result']['PaymentType']) {
                 case 'VACC':
-                    $order['payment'] = "{$data['Result']['BankCode']}-{$data['Result']['CodeNo']}";
+                    $payment = "{$data['Result']['BankCode']}-{$data['Result']['CodeNo']}";
                     break;
                 case 'CVS':
-                    $order['payment'] = "{$data['Result']['CodeNo']}";
+                    $payment = "{$data['Result']['CodeNo']}";
                     break;
                 default:
                     $payment = $order['payment'];

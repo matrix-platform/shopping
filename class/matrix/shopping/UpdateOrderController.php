@@ -36,13 +36,15 @@ class UpdateOrderController extends UpdateController {
         if ($data) {
             switch ($data['status']) {
             case 1:
-                if ($form['status'] === 2) {
+                if ($form['status'] === 1) {
+                    $names = [];
+                } else if ($form['status'] === 2) {
                     $status = 2;
                     $names = ['pay_time'];
                 } else if ($form['status'] === 9) {
                     $status = 9;
                     $names = ['cancel_time'];
-                } else if ($form['status'] !== 1) {
+                } else {
                     return ['error' => 'error.invalid-order-status'];
                 }
                 break;
