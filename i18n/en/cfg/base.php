@@ -27,8 +27,9 @@ return [
     'ecpay-shipping' => 'ECPay Logistics',
     'ecpay-shipping.url' => 'API URL',
     'ecpay-shipping.MerchantID' => 'Merchant ID',
+    'ecpay-shipping.GoodsName' => 'Goods Name',
     'ecpay-shipping.SenderName' => 'Sender',
-    'ecpay-shipping.SenderPhone' => 'Sender Phone',
+    'ecpay-shipping.SenderCellPhone' => 'Sender Phone',
 
     'linepay' => 'LINE Pay',
     'linepay.url' => 'API URL',

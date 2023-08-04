@@ -27,8 +27,9 @@ return [
     'ecpay-shipping' => '綠界物流',
     'ecpay-shipping.url' => 'API 網址',
     'ecpay-shipping.MerchantID' => '特店編號',
+    'ecpay-shipping.GoodsName' => '商品名稱',
     'ecpay-shipping.SenderName' => '寄件人',
-    'ecpay-shipping.SenderPhone' => '寄件人電話',
+    'ecpay-shipping.SenderCellPhone' => '寄件人電話',
 
     'linepay' => 'LINE Pay',
     'linepay.url' => 'API 網址',
