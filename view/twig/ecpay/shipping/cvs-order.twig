@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <form action="{{ result.path }}" id="form" method="POST">
+{% for name,value in result.data %}
+            <input name="{{ name }}" type="hidden" value="{{ value }}"/>
+{% endfor %}
+        </form>
+        <script>
+            document.getElementById("form").submit();
+        </script>
+    </body>
+</html>

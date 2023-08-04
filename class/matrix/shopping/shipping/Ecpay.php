@@ -14,8 +14,9 @@ class Ecpay {
             'LogisticsType' => 'CVS',
             'LogisticsSubType' => $order['shipment'],
             'GoodsAmount' => round($order['amount'] + $order['shipping']),
+            'GoodsName' => $cfg['GoodsName'],
             'SenderName' => $cfg['SenderName'],
-            'SenderPhone' => $cfg['SenderPhone'],
+            'SenderCellPhone' => $cfg['SenderCellPhone'],
             'ReceiverName' => $order['name'],
             'ReceiverCellPhone' => $order['phone'],
             'ServerReplyURL' => get_url(APP_ROOT . 'api/ecpay-shipping/cvs-notify'),
@@ -25,7 +26,7 @@ class Ecpay {
         return self::request('Create', $data, $cfg);
     }
 
-    private static function checksum($data, $key, $iv) {
+    public static function checksum($data, $key, $iv) {
         unset($data['CheckMacValue']);
 
         ksort($data);
@@ -64,9 +65,9 @@ class Ecpay {
         $response = file_get_contents("{$cfg['url']}{$api}", false, stream_context_create($context));
 
         if ($response) {
-            $tokens = explode('|', $response);
+            $tokens = preg_split('/\|/', $response, 2);
 
-            if (@$tokens[0] === 1) {
+            if (@$tokens[0] === '1') {
                 parse_str($tokens[1], $values);
 
                 if (@$values['CheckMacValue'] === self::checksum($values, $cfg['HashKey'], $cfg['HashIV'])) {

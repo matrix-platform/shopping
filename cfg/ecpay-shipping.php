@@ -10,4 +10,10 @@ return [
 
     'HashIV' => null,
 
+    'GoodsName' => null,
+
+    'SenderName' => null,
+
+    'SenderCellPhone' => null,
+
 ];
