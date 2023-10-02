@@ -7,8 +7,7 @@ class Kerry {
     public static function applyShipment($order) {
         $cfg = load_cfg('kerry');
 
-        $sequence = db()->next($cfg['BLN-sequence']);
-        $number = str_pad($sequence, 4, '0', STR_PAD_LEFT);
+        $number = intval($cfg['BLN-prefix']) + db()->next($cfg['BLN-sequence']);
 
         $data = [
             'ShipDate' => date('Ymd'),
@@ -17,7 +16,7 @@ class Kerry {
             'ConsigneePost' => $order['post_code'],
             'ConsigneeAdd' => $order['address'],
             'ConsigneePhone' => $order['phone'],
-            'BLN' => "{$cfg['BLN-prefix']}{$number}",
+            'BLN' => "{$number}",
             'Shipper' => $cfg['Shipper'],
             'ShipperPost' => $cfg['ShipperPost'],
             'ShipperAdd' => $cfg['ShipperAdd'],
