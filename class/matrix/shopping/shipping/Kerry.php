@@ -150,6 +150,35 @@ class Kerry {
         return false;
     }
 
+    public static function listTracing($list) {
+        $cfg = load_cfg('kerry');
+        $data = [];
+
+        foreach ($list as $item) {
+            $data[] = [
+                'BLN' => $item['shipping_no'],
+            ];
+        }
+
+        $response = json_decode(self::request('https://KerryTracingEDI.kerrytj.com/api/Tracing/BLNListTracing', $data, $cfg), true);
+
+        if ($response) {
+            if (@$response['Status'] === '1' && is_array(@$response['Result'])) {
+                $result = [];
+
+                foreach ($response['Result'] as $item) {
+                    $result[$item['BLN']] = $item['CargoTracing'];
+                }
+
+                return $result;
+            }
+
+            return null;
+        }
+
+        return false;
+    }
+
     private static function request($url, $data, $cfg) {
         $token = base64_encode("{$cfg['username']}:{$cfg['password']}");
 
