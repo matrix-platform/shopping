@@ -23,18 +23,36 @@ class Ecpay {
             'ReceiverStoreID' => $order['store_id'],
         ];
 
-        return self::request('Create', $data, $cfg);
+        $response = self::request('Express/Create', $data, $cfg);
+
+        if ($response) {
+            $tokens = preg_split('/\|/', $response, 2);
+
+            if (@$tokens[0] === '1') {
+                parse_str($tokens[1], $values);
+
+                if (@$values['CheckMacValue'] === self::checksum($values, $cfg['HashKey'], $cfg['HashIV'])) {
+                    return $values;
+                }
+            }
+
+            return null;
+        }
+
+        return false;
     }
 
     public static function checksum($data, $key, $iv) {
         unset($data['CheckMacValue']);
 
-        ksort($data);
+        $names = array_keys($data);
+
+        natcasesort($names);
 
         $sign = 'HashKey=' . $key;
 
-        foreach ($data as $name => $value) {
-            $sign = "{$sign}&{$name}={$value}";
+        foreach ($names as $name) {
+            $sign = "{$sign}&{$name}={$data[$name]}";
         }
 
         $sign = strtolower(urlencode($sign . '&HashIV=' . $iv));
@@ -64,21 +82,7 @@ class Ecpay {
 
         $response = file_get_contents("{$cfg['url']}{$api}", false, stream_context_create($context));
 
-        if ($response) {
-            $tokens = preg_split('/\|/', $response, 2);
-
-            if (@$tokens[0] === '1') {
-                parse_str($tokens[1], $values);
-
-                if (@$values['CheckMacValue'] === self::checksum($values, $cfg['HashKey'], $cfg['HashIV'])) {
-                    return $values;
-                }
-            }
-
-            return null;
-        }
-
-        return false;
+        return $response;
     }
 
 }

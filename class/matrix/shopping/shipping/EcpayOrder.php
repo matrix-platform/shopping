@@ -56,13 +56,13 @@ class EcpayOrder extends UserController {
     private function getPath() {
         switch ($this->shipment()) {
         case 'UNIMARTC2C':
-            return 'PrintUniMartC2COrderInfo';
+            return 'Express/PrintUniMartC2COrderInfo';
         case 'FAMIC2C':
-            return 'PrintFAMIC2COrderInfo';
+            return 'Express/PrintFAMIC2COrderInfo';
         case 'HILIFEC2C':
-            return 'PrintHILIFEC2COrderInfo';
+            return 'Express/PrintHILIFEC2COrderInfo';
         case 'OKMARTC2C':
-            return 'PrintOKMARTC2COrderInfo';
+            return 'Express/PrintOKMARTC2COrderInfo';
         default:
             return null;
         }

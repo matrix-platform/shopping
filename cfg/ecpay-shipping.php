@@ -2,7 +2,7 @@
 
 return [
 
-    'url' => 'https://logistics.ecpay.com.tw/Express/',
+    'url' => 'https://logistics.ecpay.com.tw/',
 
     'MerchantID' => null,
 
