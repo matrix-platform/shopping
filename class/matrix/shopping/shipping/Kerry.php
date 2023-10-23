@@ -31,6 +31,8 @@ class Kerry {
                 return $data['BLN'];
             }
 
+            logging('kerry')->error('applyShipment', $response);
+
             return null;
         }
 
@@ -60,6 +62,8 @@ class Kerry {
             if (@$response['Result'] === '01') {
                 return true;
             }
+
+            logging('kerry')->error('applyReturn', $response);
 
             return null;
         }
@@ -172,6 +176,8 @@ class Kerry {
 
                 return $result;
             }
+
+            logging('kerry')->error('listTracing', $response);
 
             return null;
         }
