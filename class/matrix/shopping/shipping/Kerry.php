@@ -31,7 +31,7 @@ class Kerry {
                 return $data['BLN'];
             }
 
-            logging('kerry')->error('applyShipment', $response);
+            logging('kerry')->error('ShipmentDelivery', $response);
 
             return null;
         }
@@ -63,7 +63,7 @@ class Kerry {
                 return $data['BLN'];
             }
 
-            logging('kerry')->error('applyShipment', $response);
+            logging('kerry')->error('V2/Shipment', $response);
 
             return null;
         }
@@ -95,7 +95,7 @@ class Kerry {
                 return true;
             }
 
-            logging('kerry')->error('applyReturn', $response);
+            logging('kerry')->error('PickupV2', $response);
 
             return null;
         }
@@ -209,7 +209,7 @@ class Kerry {
                 return $result;
             }
 
-            logging('kerry')->error('listTracing', $response);
+            logging('kerry')->error('api/Tracing/BLNListTracing', $response);
 
             return null;
         }
