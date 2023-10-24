@@ -39,6 +39,38 @@ class Kerry {
         return false;
     }
 
+    public static function applyShipmentV2($order) {
+        $cfg = load_cfg('kerry');
+
+        $number = intval($cfg['BLN-prefix']) + db()->next($cfg['BLN-sequence']);
+
+        $data = [
+            'ShipDate' => date('Ymd'),
+            'Shipper' => $cfg['Shipper'],
+            'CustomerNo' => $cfg['CustomerNo'],
+            'BLN' => "{$number}",
+            'Consignee' => $order['name'],
+            'ConsigneePost' => $order['post_code'],
+            'ConsigneeAdd' => $order['address'],
+            'ConsigneePhone' => $order['phone'],
+            'Temperature' => $cfg['Temperature'],
+        ];
+
+        $response = json_decode(self::request("{$cfg['url']}V2/Shipment", [$data], $cfg), true);
+
+        if ($response) {
+            if (@$response['Result'] === '01') {
+                return $data['BLN'];
+            }
+
+            logging('kerry')->error('applyShipment', $response);
+
+            return null;
+        }
+
+        return false;
+    }
+
     public static function applyReturn($order, $number, $piece = 1) {
         $cfg = load_cfg('kerry');
 
