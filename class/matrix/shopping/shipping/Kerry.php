@@ -53,6 +53,7 @@ class Kerry {
             'ConsigneePost' => $order['post_code'],
             'ConsigneeAdd' => $order['address'],
             'ConsigneePhone' => $order['phone'],
+            'Piece' => 1,
             'Temperature' => $cfg['Temperature'],
         ];
 
