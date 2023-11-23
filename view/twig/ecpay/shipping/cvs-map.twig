@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <body>
-        <form action="{{ cfg('ecpay-shipping.url') }}map" id="form" method="POST">
+        <form action="{{ cfg('ecpay-shipping.url') }}Express/map" id="form" method="POST">
             <input name="MerchantID" type="hidden" value="{{ cfg('ecpay-shipping.MerchantID') }}" />
             <input name="LogisticsType" type="hidden" value="CVS" />
             <input name="LogisticsSubType" type="hidden" value="{{ form.type }}" />
