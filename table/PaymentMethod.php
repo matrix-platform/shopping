@@ -4,6 +4,7 @@ use matrix\db\column\DisableTime;
 use matrix\db\column\EnableTime;
 use matrix\db\column\Ranking;
 use matrix\db\column\Text;
+use matrix\db\column\Textarea;
 use matrix\db\Table;
 
 $tbl = new Table('base_payment_method');
@@ -11,6 +12,9 @@ $tbl = new Table('base_payment_method');
 $tbl->add('title', Text::class)
     ->multilingual(MULTILINGUAL)
     ->required(true);
+
+$tbl->add('description', Textarea::class)
+    ->multilingual(MULTILINGUAL);
 
 $tbl->add('enable_time', EnableTime::class);
 

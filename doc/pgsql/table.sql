@@ -2,6 +2,7 @@
 CREATE TABLE base_payment_method (
     id           INTEGER   NOT NULL PRIMARY KEY,
     title        TEXT          NULL,
+    description  TEXT          NULL,
     enable_time  TIMESTAMP     NULL,
     disable_time TIMESTAMP     NULL,
     ranking      INTEGER   NOT NULL

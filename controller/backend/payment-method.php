@@ -1,3 +1,9 @@
 <?php //>
 
-return new matrix\web\backend\ListController('PaymentMethod');
+return new class('PaymentMethod') extends matrix\web\backend\ListController {
+
+    protected function init() {
+        $this->columns(['title']);
+    }
+
+};
