@@ -2,6 +2,12 @@
 
 return [
 
+    'chb' => '彰銀',
+    'chb.merchant_id' => '企業代號',
+    'chb.key' => 'Key',
+    'chb.iv' => 'IV',
+    'chb.ip' => '通知來源 IP',
+
     'digiflow' => '數位鎏',
     'digiflow.version' => '版本',
     'digiflow.merchant_id' => '商店編號',

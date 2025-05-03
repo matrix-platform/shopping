@@ -2,6 +2,12 @@
 
 return [
 
+    'chb' => '彰银',
+    'chb.merchant_id' => '企业代号',
+    'chb.key' => 'Key',
+    'chb.iv' => 'IV',
+    'chb.ip' => '通知来源 IP',
+
     'digiflow' => '数位鎏',
     'digiflow.version' => '版本',
     'digiflow.merchant_id' => '商店编号',
@@ -35,8 +41,8 @@ return [
     'kerry.CustomerNo' => '客户编号',
     'kerry.username' => '帐号',
     'kerry.password' => '密码',
-    'kerry.BLN-prefix' => '託运单号前缀字',
-    'kerry.BLN-sequence' => '託运单号序号池',
+    'kerry.BLN-prefix' => '托运单号前缀字',
+    'kerry.BLN-sequence' => '托运单号序号池',
     'kerry.Shipper' => '寄货人',
     'kerry.ShipperPost' => '寄货人邮寄区号',
     'kerry.ShipperAdd' => '寄货人地址',

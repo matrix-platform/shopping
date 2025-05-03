@@ -58,7 +58,6 @@ $tbl->add('drawback_time', Timestamp::class);
 $tbl->add('invoice_num', Text::class);
 
 $tbl->add('invoice_type', Integer::class)
-    ->default(1)
     ->options(load_options('invoice-type'));
 
 $tbl->add('invoice_category', Integer::class)

@@ -2,6 +2,12 @@
 
 return [
 
+    'chb' => 'CHB',
+    'chb.merchant_id' => 'Merchant ID',
+    'chb.key' => 'Key',
+    'chb.iv' => 'IV',
+    'chb.ip' => 'Notify Source IP',
+
     'digiflow' => 'DigiFlow',
     'digiflow.version' => 'Version',
     'digiflow.merchant_id' => 'Merchant ID',
