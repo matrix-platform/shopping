@@ -23,7 +23,7 @@ class Chb {
             $checksum = 10 - $checksum;
         }
 
-        $order['payment'] = "{$merchant}{$id}{$checksum}{$amount}";
+        $order['payment'] = "{$merchant}{$id}{$checksum}";
 
         return $order;
     }
