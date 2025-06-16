@@ -15,9 +15,9 @@ class ChbNotify extends Controller {
     }
 
     protected function process($form) {
-        $data = REMOTE_ADDR === cfg('chb.ip') ? $this->decode($form) : null;
+        $data = $this->decode($form);
 
-        if ($data) {
+        if ($data && REMOTE_ADDR === cfg('chb.ip')) {
             $order = $this->getOrder($data['INACCTNO']);
 
             if ($order && $order['amount'] + $order['shipping'] == $data['AMT']) {
