@@ -50,12 +50,12 @@ class ChbNotify extends Controller {
     private function decode($form) {
         logging($this->name())->info(json_encode($form, JSON_UNESCAPED_UNICODE));
 
-        $result = base64_decode(urldecode($form['result']));
+        $result = base64_decode($form['result']);
         $cipher = 'DES-EDE3-CBC';
         $key = cfg('chb.key');
         $iv = cfg('chb.iv');
 
-        $text = openssl_decrypt($result, $cipher, $key, OPENSSL_RAW_DATA, $iv);
+        $text = openssl_decrypt($result, $cipher, $key, OPENSSL_RAW_DATA | OPENSSL_NO_PADDING, $iv);
 
         parse_str(trim(rtrim($text, "\0")), $data);
 
